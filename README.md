@@ -3,12 +3,12 @@
 <h1>Preserved Tahoe Patchset Reference (OCLP 3.0.0 Nightly state)</h1>
 </div>
 
-This repository contains a preserved working state of the Tahoe patchset as it existed in the final lzhoang2801 OCLP 3.0.0 Nightly snapshot (Dec 24, 2025), which is no longer directly reproducible on macOS Tahoe due to missing resources (AppleHDA) in the referenced PatcherSupportPkg.
+This repository contains a preserved working state of the Tahoe patchset as it existed in the final lzhoang2801 OCLP 3.0.0 Nightly snapshot (Dec 24, 2025), which is no longer directly reproducible under macOS Tahoe due to missing resources (AppleHDA) in the referenced PatcherSupportPkg.
 
 In the Dec 24, 2025 snapshot, the last upstream commit references Universal-Binaries from an upstream PatcherSupportPkg source whose distributed Universal-Binaries package does not include AppleHDA.
 As a result, the modern audio (AppleHDA) root patch cannot be applied from that snapshot without providing a Universal-Binaries package that contains AppleHDA.
 
-This repository restores a working state by redirecting the Universal-Binaries download to a preserved mirror that includes AppleHDA (and thus matches the intended Tahoe patchset requirements). No new patches are introduced; only the resource source was restored.
+This repository restores a working state by redirecting the Universal-Binaries download to a preserved mirror that includes AppleHDA (and thus matches the intended Tahoe patchset requirements). No new patches are introduced; only the original resource location was restored.
 
 This fork is **not an official upstream release** of OpenCore Legacy Patcher and is not affiliated with the Dortania OCLP project.
 
@@ -61,7 +61,7 @@ If this repository becomes unavailable or private, required downloads will fail.
 
 ## Important compatibility notice
 
-This repository is not intended for use with **macOS Tahoe 26.4 beta 1**
+Root patching from this repository is not compatible with macOS Tahoe 26.4 or newer.
 
 Starting with macOS 26.4 beta 1, Apple introduced fundamental changes to the system patching workflow.  
 
@@ -72,12 +72,13 @@ In particular:
 
 For macOS 26.4 beta 1, a redesigned patcher is required.  
 
-With the availability of an appropriate KDK for macOS 26.4 beta (not available yet), users should instead use:
+Users should instead use:
 
 OCLP Nightly 3.1.5 (or newer) by YBronst (MakAsrock):
 https://github.com/YBronst/OpenCore-Legacy-Patcher/releases/tag/3.1.5
 
-Note: OCLP 3.1.5 is currently confirmed working on macOS 26.3. On macOS 26.4 beta 1, root patching will cause a kernel panic during boot due to the missing AppleHDA KDK. Do not apply root patches on macOS 26.4 beta 1 at this time.
+Note: OCLP 3.1.5 is currently confirmed working on macOS 26.3. A dedicated switch allows disabling the Modern Audio (AppleHDA) patch, enabling root patching on macOS 26.4 beta 1 and newer systems without the required AppleHDA Kernel Debug Kit (KDK).
+This allows the root patch process to complete successfully in a partial configuration even though Apple has not yet released the corresponding Kernel Debug Kit (KDK). The Modern Audio patch requires correct kernel symbols from the AppleHDA KDK. If Modern Audio is enabled, the system will kernel panic during boot. Wi-Fi related root patches can be applied normally with Modern Audio disabled. Audio functionality is expected to become available once Apple releases the corresponding AppleHDA Kernel Debug Kit (KDK).
 
 ## Key Changes in OCLP Nightly 3.1.5:
 * **Backward compatibility** with macOS Tahoe 26.0–26.3 has been preserved.
@@ -87,8 +88,11 @@ Note: OCLP 3.1.5 is currently confirmed working on macOS 26.3. On macOS 26.4 bet
 
 ---
 
-This repository should be used as a stable reference environment for macOS Tahoe 26.0–26.3 systems requiring fully working modern Wi-Fi and AppleHDA audio.
-For macOS Tahoe 26.4 and newer, support will depend on the availability of the required KDK and future updates of the actively developed OCLP 3.1.5 branch by YBronst.
+This repository serves as a stable reference environment for macOS Tahoe 26.0–26.3 systems requiring fully working modern Wi-Fi and AppleHDA audio.
+
+For macOS Tahoe 26.4 and newer, users should use the actively developed OpenCore Legacy Patcher 3.1.5+ by YBronst.
+On macOS Tahoe 26.4 beta 1, root patching is possible when the “Modern Audio” option is disabled in the root patcher.
+AppleHDA audio support will become available once the corresponding AppleHDA Kernel Debug Kit (KDK) is provided by Apple.
 
 ---
 
