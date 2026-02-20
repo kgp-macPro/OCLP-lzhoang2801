@@ -21,7 +21,7 @@ This fork is intended for testing the historical Tahoe patchset behavior with re
 This repository represents a preserved reference implementation of the original Tahoe patchset workflow and is not an actively developed continuation of the patcher.
 
 Active development of the Tahoe patchset continues in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock):
-https://github.com/YBronst/OpenCore-Legacy-Patcher
+https://github.com/YBronst/OpenCore-Legacy-Patcher/releases
 
 ---
 
@@ -61,7 +61,7 @@ If this repository becomes unavailable or private, required downloads will fail.
 
 ## Important compatibility notice
 
-Root patching from this repository is not compatible with macOS Tahoe 26.4 or newer.
+Root patching directly from this repository is not compatible with macOS Tahoe 26.4 or newer.
 
 Starting with macOS 26.4 beta 1, Apple introduced fundamental changes to the system patching workflow.  
 
@@ -74,24 +74,26 @@ For macOS 26.4 beta 1, a redesigned patcher is required.
 
 Users should instead use:
 
-OCLP Nightly 3.1.5 (or newer) by YBronst (MakAsrock):
-https://github.com/YBronst/OpenCore-Legacy-Patcher/releases/tag/3.1.5
+OCLP Nightly 3.1.6 (or newer) by YBronst (MakAsrock):
+https://github.com/YBronst/OpenCore-Legacy-Patcher
 
-Note: OCLP 3.1.5 is currently confirmed working on macOS 26.3. A dedicated switch allows disabling the Modern Audio (AppleHDA) patch, enabling root patching on macOS 26.4 beta 1 and newer systems without the required AppleHDA Kernel Debug Kit (KDK).
-This allows the root patch process to complete successfully in a partial configuration even though Apple has not yet released the corresponding Kernel Debug Kit (KDK). The Modern Audio patch requires correct kernel symbols from the AppleHDA KDK. If Modern Audio is enabled, the system will kernel panic during boot. Wi-Fi related root patches can be applied normally with Modern Audio disabled. Audio functionality is expected to become available once Apple releases the corresponding AppleHDA Kernel Debug Kit (KDK).
+Note: OCLP 3.1.6 is confirmed working on macOS 26.3 and is required for macOS 26.4 and newer. OCLP 3.1.6 introduces a dedicated toggle to disable the Modern Audio (AppleHDA) root patch.
+This allows root patching on macOS 26.4 beta 1 and newer even without the AppleHDA Kernel Debug Kit (KDK). The system will operate without AppleHDA audio until the matching KDK is released by Apple. 
+The Modern Audio patch requires correct kernel symbols from the AppleHDA KDK. If the Modern Audio patch is enabled without the matching AppleHDA KDK, the system will kernel panic during boot due to missing kernel symbols. Wi-Fi related root patches can be applied normally with Modern Audio disabled. Audio functionality is expected to become available once Apple releases the corresponding AppleHDA Kernel Debug Kit (KDK).
 
-## Key Changes in OCLP Nightly 3.1.5:
+## Key Changes in OCLP Nightly 3.1.6:
 * **Backward compatibility** with macOS Tahoe 26.0–26.3 has been preserved.
 * **Patch image processing** has been migrated to APFS for compatibility with macOS 26.4.
 * **Privileged mount logic** has been added, which is necessary for accessing internal patch images and system resources.
-* **AMFIPass** cannot be used with OCLP 3.1.5 due to a persistent kernel panic. Instead, use `amfi=0x80` boot argument and handling application permissions based on [`tccplus`](https://github.com/YBronst/tccplus).
+* **Added a toggle in the Root Patches GUI** to disable the Modern Audio (AppleHDA) patch when the required AppleHDA KDK is unavailable (e.g. macOS 26.4 beta 1).
+* **AMFIPass** cannot be used with OCLP 3.1.6 due to a persistent kernel panic. Instead, use `amfi=0x80` boot argument and handling application permissions based on [`tccplus`](https://github.com/YBronst/tccplus).
 
 ---
 
 This repository serves as a stable reference environment for macOS Tahoe 26.0–26.3 systems requiring fully working modern Wi-Fi and AppleHDA audio.
 
-For macOS Tahoe 26.4 and newer, users should use the actively developed OpenCore Legacy Patcher 3.1.5+ by YBronst.
-On macOS Tahoe 26.4 beta 1, root patching is possible when the “Modern Audio” option is disabled in the root patcher.
+For macOS Tahoe 26.4 beta 1 and newer, users should use the actively developed OpenCore Legacy Patcher 3.1.6+ by YBronst.
+On macOS Tahoe 26.4 beta 1, root patching is currently possible when the “Modern Audio” option is disabled in the root patcher.
 AppleHDA audio support will become available once the corresponding AppleHDA Kernel Debug Kit (KDK) is provided by Apple.
 
 ---
