@@ -27,16 +27,16 @@ https://github.com/YBronst/OpenCore-Legacy-Patcher/releases
 
 ## AMFI / Signing notice
 
-The distributed binaries are unsigned and therefore cannot be used together with **AMFIPass.kext**.
+The distributed binaries are unsigned. Therefore they cannot be used together with **AMFIPass.kext** unless the boot argument `amfi=0x80` is used. 
 
-AMFIPass requires a properly signed OCLP release. Until an official signed release of OCLP 3.0.0 becomes available, disable AMFIPass.kext and use:
+AMFIPass normally requires a properly signed OCLP release. Until an official signed release of OCLP 3.0.0 becomes available, you can enable AMFIPass.kext, but you must use the boot argument:
 
-amfi=0x80
+`amfi=0x80`
 
-After disabling AMFI, some applications (for example Firefox) may fail to start.  
+With `amfi=0x80`, some applications (for example Firefox) may fail to start.  
 To mitigate this behavior, additionally use:
 
-ipc_control_port_options=0
+`ipc_control_port_options=0`
 
 (credits to badbrain)
 
@@ -70,31 +70,43 @@ In particular:
 - `hdiutil` mounting now requires elevated privileges
 - As a result, the root patch process used by OCLP 3.0.0 Nightly and related forks cannot complete successfully
 
-For macOS 26.4 beta 1, a redesigned patcher is required.  
+For macOS 26.4 beta 1 and newer, a redesigned patcher is required.  
 
 Users should instead use:
 
 OCLP Nightly 3.1.6 (or newer) by YBronst (MakAsrock):
 https://github.com/YBronst/OpenCore-Legacy-Patcher
 
-Note: OCLP 3.1.6 is confirmed working on macOS 26.3 and is required for macOS 26.4 and newer. OCLP 3.1.6 introduces a dedicated toggle to disable the Modern Audio (AppleHDA) root patch.
+OCLP 3.1.6 is confirmed working on macOS 26.3 and is required for macOS 26.4 and newer. OCLP 3.1.6 introduces a dedicated toggle to disable the Modern Audio (AppleHDA) root patch.
 This allows root patching on macOS 26.4 beta 1 and newer even without the AppleHDA Kernel Debug Kit (KDK). The system will operate without AppleHDA audio until the matching KDK is released by Apple. 
-The Modern Audio patch requires correct kernel symbols from the AppleHDA KDK. If the Modern Audio patch is enabled without the matching AppleHDA KDK, the system will kernel panic during boot due to missing kernel symbols. Wi-Fi related root patches can be applied normally with Modern Audio disabled. Audio functionality is expected to become available once Apple releases the corresponding AppleHDA Kernel Debug Kit (KDK).
+The Modern Audio patch requires the correct kernel symbols from the AppleHDA KDK. If the Modern Audio patch is enabled without the matching AppleHDA KDK, the system will kernel panic during boot due to missing kernel symbols. Wi-Fi related root patches can be applied normally with Modern Audio disabled. Audio functionality is expected to become available once Apple releases the corresponding AppleHDA Kernel Debug Kit (KDK).
 
-## Key Changes in OCLP Nightly 3.1.6:
+## Key Changes in OCLP Nightly 3.1.6
 * **Backward compatibility** with macOS Tahoe 26.0–26.3 has been preserved.
 * **Patch image processing** has been migrated to APFS for compatibility with macOS 26.4.
 * **Privileged mount logic** has been added, which is necessary for accessing internal patch images and system resources.
-* **Added a toggle in the Root Patches GUI** to disable the Modern Audio (AppleHDA) patch when the required AppleHDA KDK is unavailable (e.g. macOS 26.4 beta 1).
-* **AMFIPass** cannot be used with OCLP 3.1.6 due to a persistent kernel panic. Instead, use `amfi=0x80` boot argument and handling application permissions based on [`tccplus`](https://github.com/YBronst/tccplus).
+* **Added a toggle in the Root Patches GUI** to disable the Modern Audio (AppleHDA) patch when the required AppleHDA KDK is unavailable (e.g. macOS 26.4 beta 1 or newer).
+* **AMFIPass.kext can be used**, but it must be enabled together with the boot argument `amfi=0x80`. 
+* If issues occur when using boot argument `amfi=0x80`, YBronst recommends handling application permissions using [`tccplus`](https://github.com/YBronst/tccplus).
 
 ---
 
 This repository serves as a stable reference environment for macOS Tahoe 26.0–26.3 systems requiring fully working modern Wi-Fi and AppleHDA audio.
 
 For macOS Tahoe 26.4 beta 1 and newer, users should use the actively developed OpenCore Legacy Patcher 3.1.6+ by YBronst.
-On macOS Tahoe 26.4 beta 1, root patching is currently possible when the “Modern Audio” option is disabled in the root patcher.
-AppleHDA audio support will become available once the corresponding AppleHDA Kernel Debug Kit (KDK) is provided by Apple.
+Root patching on macOS Tahoe 26.4 beta 1 and newer is currently possible when the “Modern Audio” option is disabled. AppleHDA audio support will become available once Apple releases the corresponding AppleHDA Kernel Debug Kit (KDK).
+
+---
+
+## Setup Guidelines and Community Discussion
+
+Detailed setup instructions, prerequisites, troubleshooting tips and ongoing discussion can be found in the following threads:
+
+**InsanelyMac:**  
+https://www.insanelymac.com/forum/topic/362042-experimental-fork-of-oclp-300-nightly-%E2%80%93-wi-fi-airdropairplay-and-applehda-fully-working-under-tahoe/
+
+**tonymacx86:**  
+https://www.tonymacx86.com/threads/experimental-fork-of-oclp-3-0-0-nightly-wi-fi-airdrop-airplay-and-applehda-fully-working-under-tahoe.332849/
 
 ---
 
@@ -183,7 +195,7 @@ AppleHDA audio support will become available once the corresponding AppleHDA Ker
 * MacRumors and Unsupported Mac Communities
   * Endless testing and reporting issues
 * Apple
-  * for macOS and many of the kexts, frameworks and other binaries we reimplemented into newer Ones
+  * for macOS and many of the kexts, frameworks and other binaries we reimplemented into newer ones
 
 ## Disclaimer
 This is **not an official Dortania release** and is intended for complex Hackintosh configurations.
@@ -193,12 +205,5 @@ This is **not an official Dortania release** and is intended for complex Hackint
 * lzhoang2801
 * YBronst (MakAsrock)
 * All PatcherSupportPkg contributors
-
----
-
-Setup guidelines, prerequisites and community discussion:  
-https://www.insanelymac.com/forum/topic/362042-experimental-fork-of-oclp-300-nightly-%E2%80%93-wi-fi-airdropairplay-and-applehda-fully-working-under-tahoe/  
-or  
-https://www.tonymacx86.com/threads/experimental-fork-of-oclp-3-0-0-nightly-wi-fi-airdrop-airplay-and-applehda-fully-working-under-tahoe.332849/
 
 ---
