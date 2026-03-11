@@ -27,9 +27,9 @@ https://github.com/YBronst/OpenCore-Legacy-Patcher/releases
 
 ## AMFI / Signing notice
 
-The distributed binaries are unsigned. Therefore they cannot be used together with **AMFIPass.kext** unless the boot argument `amfi=0x80` is used. 
+The distributed binaries are unsigned. Therefore they cannot be used together with **AMFIPass.kext** unless the boot argument `amfi=0x80` is used.
 
-AMFIPass normally requires a properly signed OCLP release. Until an official signed release of OCLP 3.0.0 becomes available, you can enable AMFIPass.kext, but you must use the boot argument:
+AMFIPass normally requires a properly signed OCLP release. Until an official signed release of OCLP 3.0.0 becomes available, you can enable or disable AMFIPass.kext, but you must use the boot argument:
 
 `amfi=0x80`
 
@@ -61,40 +61,34 @@ If this repository becomes unavailable or private, required downloads will fail.
 
 ## Important compatibility notice
 
-Root patching directly from this repository is not compatible with macOS Tahoe 26.4 or newer.
+Early reports suggested that macOS Tahoe 26.4 introduced fundamental changes to the system patching workflow related to HFS+ based patch images.  
+Further testing has shown that this assumption was incorrect.
 
-Starting with macOS 26.4 beta 1, Apple introduced fundamental changes to the system patching workflow.  
+The issues observed in **macOS 26.4 beta 1** were most likely caused by a temporary **HFS+ mounting bug**, which Apple already fixed in **beta 2**.
 
-In particular:
-- The previous HFS-based patch image workflow is no longer supported by the OS
-- `hdiutil` mounting now requires elevated privileges
-- As a result, the root patch process used by OCLP 3.0.0 Nightly and related forks cannot complete successfully
+The remaining problems encountered during root patching were caused by the absence of a **matching Kernel Debug Kit (KDK)**.  
+The required KDK was not released until **macOS 26.4 beta 4**.
 
-For macOS 26.4 beta 1 and newer, a redesigned patcher is required.  
+With **macOS 26.4 beta 4 and the corresponding KDK installed**, root patching works again with the following patcher versions:
 
-Users should instead use:
+- **OCLP 3.0.0 Nightly**
+- **OCLP-Mod 3.1.5**
+- **OCLP 3.1.6 Nightly**
 
-OCLP Nightly 3.1.6 (or newer) by YBronst (MakAsrock):
-https://github.com/YBronst/OpenCore-Legacy-Patcher
+All three patchers can successfully apply the modern Wi-Fi and modern audio (AppleHDA) root patches when the matching KDK is available.
 
-OCLP 3.1.6 is confirmed working on macOS 26.3 and is required for macOS 26.4 and newer. OCLP 3.1.6 introduces a dedicated toggle to disable the Modern Audio (AppleHDA) root patch.
-This allows root patching on macOS 26.4 beta 1 and newer even without the AppleHDA Kernel Debug Kit (KDK). The system will operate without AppleHDA audio until the matching KDK is released by Apple. 
-The Modern Audio patch requires the correct kernel symbols from the AppleHDA KDK. If the Modern Audio patch is enabled without the matching AppleHDA KDK, the system will kernel panic during boot due to missing kernel symbols. Wi-Fi related root patches can be applied normally with Modern Audio disabled. Audio functionality is expected to become available once Apple releases the corresponding AppleHDA Kernel Debug Kit (KDK).
+Booting works with:
 
-## Key Changes in OCLP Nightly 3.1.6
-* **Backward compatibility** with macOS Tahoe 26.0–26.3 has been preserved.
-* **Patch image processing** has been migrated to APFS for compatibility with macOS 26.4.
-* **Privileged mount logic** has been added, which is necessary for accessing internal patch images and system resources.
-* **Added a toggle in the Root Patches GUI** to disable the Modern Audio (AppleHDA) patch when the required AppleHDA KDK is unavailable (e.g. macOS 26.4 beta 1 or newer).
-* **AMFIPass.kext can be used**, but it must be enabled together with the boot argument `amfi=0x80`. 
-* If issues occur when using boot argument `amfi=0x80`, YBronst recommends handling application permissions using [`tccplus`](https://github.com/YBronst/tccplus).
+`amfi=0x80`
+
+with **AMFIPass.kext either enabled or disabled**. OCLP-Mod 3.1.5 also works with `-amfipassbeta` instead of `amfi=0x80`. 
 
 ---
 
-This repository serves as a stable reference environment for macOS Tahoe 26.0–26.3 systems requiring fully working modern Wi-Fi and AppleHDA audio.
+This repository serves as a stable reference environment for macOS Tahoe 26.0–26.4 systems requiring fully working modern Wi-Fi and AppleHDA audio.
 
-For macOS Tahoe 26.4 beta 1 and newer, users should use the actively developed OpenCore Legacy Patcher 3.1.6+ by YBronst.
-Root patching on macOS Tahoe 26.4 beta 1 and newer is currently possible when the “Modern Audio” option is disabled. AppleHDA audio support will become available once Apple releases the corresponding AppleHDA Kernel Debug Kit (KDK).
+Active development of the Tahoe patchset continues in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock):
+https://github.com/YBronst/OpenCore-Legacy-Patcher/releases
 
 ---
 
