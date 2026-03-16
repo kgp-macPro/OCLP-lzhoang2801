@@ -191,6 +191,13 @@ https://www.tonymacx86.com/threads/experimental-fork-of-oclp-3-0-0-nightly-wi-fi
 * Apple
   * for macOS and many of the kexts, frameworks and other binaries we reimplemented into newer ones
 
+## Maintainer
+This preservation repository is maintained by **kgp**.
+Online identities:
+- GitHub: https://github.com/kgp-macPro
+- InsanelyMac: kgp-iMacPro
+- tonymacx86: kgp
+
 ## Disclaimer
 This is **not an official Dortania release** and is intended for complex Hackintosh configurations.
 
