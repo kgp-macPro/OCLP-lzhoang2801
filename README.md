@@ -27,13 +27,33 @@ As a result, the modern audio (AppleHDA) root patch cannot be applied from that 
 
 This repository restores a working state by redirecting the Universal-Binaries download to a preserved mirror that includes AppleHDA (and thus matches the intended Tahoe patchset requirements). No new patches are introduced; only the original resource location was restored.
 
-This fork is **not an official upstream release** of OpenCore Legacy Patcher and is not affiliated with the Dortania OCLP project.
+This fork is **not an official upstream release** of OpenCore Legacy Patcher and is not affiliated with or supported by the Dortania OCLP project.
 
-This fork aims to restore modern Wi-Fi (including AirDrop and AirPlay) and modern audio (AppleHDA) on advanced Hackintosh systems running macOS Tahoe 26.x. Do **not** apply root patches on unsupported native Macs or on Hackintosh systems with unsupported hardware (e.g. GPUs). Apart from modern Wi-Fi and modern audio, other root patches are expected to fail.
+This fork aims to restore:
+- modern audio (AppleHDA)
+- modern Wi-Fi
+- Apple Wireless Direct Link (AWDL: AirDrop, AirPlay, Screen Mirroring)
+on advanced Hackintosh systems running macOS Tahoe 26.x. 
 
-This fork is not an official OCLP project and is provided for documentation and testing purposes only. It reflects development work originally performed by the OCLP contributors.
+Do **not** apply root patches on unsupported native Macs or on Hackintosh systems with unsupported hardware (e.g. GPUs). Apart from modern Wi-Fi and modern audio, other root patches are expected to fail.
 
-This fork is intended for testing the historical Tahoe patchset behavior with regard to modern Wi-Fi and modern audio functionality.
+## Functionality Status
+
+The following functionality has been verified under macOS Tahoe 26.x:
+
+modern audio (AppleHDA) -- functional  
+modern Wi-Fi -- functional  
+
+AWDL stack:
+- AirDrop -- fully functional, bidirectional  
+- AirPlay -- functional  
+- Screen Mirroring -- functional  
+
+Continuity:
+- Handoff -- functional (e.g. Mail, Notes, Safari)  
+- Sidecar -- currently not functional  
+
+This fork is provided for documentation and testing purposes only and reflects development work originally carried out by the OCLP contributors.
 
 This repository represents a preserved reference implementation of the original Tahoe patchset workflow and is not an actively developed continuation of the patcher.
 
@@ -90,17 +110,16 @@ The required KDK was not released until **macOS 26.4 beta 4**.
 
 With **macOS 26.4 beta 4 and the corresponding KDK installed**, root patching works again with the following patcher versions:
 
-- **OCLP 3.0.0 Nightly**  
-- **OCLP-Mod 3.1.5**  
-- **OCLP 3.1.6 Nightly**  
+- **OCLP 3.0.0 Nightly** (this repository)  
+- **OCLP 3.0.0 Nightly (amfipassbeta variant)**  
+- **OCLP-Mod 3.1.7**  
+- **OCLP 3.1.7 Nightly**  
 
-All three patchers can successfully apply the modern Wi-Fi and modern audio (AppleHDA) root patches when the matching KDK is available.
+All four patchers can successfully apply the modern Wi-Fi and modern audio (AppleHDA) root patches when the matching KDK is available.  
+All four patchsets also provide full Apple Wireless Direct Link (AWDL) functionality.
 
-Booting works with:
-
-`amfi=0x80`
-
-with **AMFIPass.kext either enabled or disabled**. OCLP-Mod 3.1.5 also works with `-amfipassbeta` instead of `amfi=0x80`.
+- **OCLP 3.0.0 Nightly (amfipassbeta variant)** and **OCLP-Mod 3.1.7** work with **AMFIPass.kext + `-amfipassbeta`**  
+- **OCLP 3.0.0 Nightly** and **OCLP 3.1.7 Nightly** require **`amfi=0x80`**
 
 ---
 
@@ -116,10 +135,10 @@ https://github.com/YBronst/OpenCore-Legacy-Patcher/releases
 Detailed setup instructions, prerequisites, troubleshooting tips and ongoing discussion can be found in the following threads:
 
 **InsanelyMac:**  
-https://www.insanelymac.com/forum/topic/362042-experimental-fork-of-oclp-300-nightly-%E2%80%93-wi-fi-airdropairplay-and-applehda-fully-working-under-tahoe/
+https://www.insanelymac.com/forum/topic/362042-experimental-fork-of-oclp-300-nightly-%E2%80%93-modern-wi-fi-awdl-and-applehda-fully-working-under-tahoe/
 
-**tonymacx86:**  
-https://www.tonymacx86.com/threads/experimental-fork-of-oclp-3-0-0-nightly-wi-fi-airdrop-airplay-and-applehda-fully-working-under-tahoe.332849/
+**tonymacx86 (mirror thread):**  
+https://www.tonymacx86.com/threads/experimental-fork-of-oclp-3-0-0-nightly-modern-wi-fi-awdl-and-applehda-fully-working-under-tahoe-26-x.332849/
 
 ---
 
