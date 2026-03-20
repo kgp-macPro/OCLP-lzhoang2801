@@ -161,7 +161,7 @@ This preservation repository is maintained by **kgp**.
 Online identities:
 
 - GitHub: https://github.com/kgp-macPro  
-- InsanelyMac: kgp-iMacPro  
+- InsanelyMac: kgp (formerly KGP-iMacPro)
 - tonymacx86: kgp  
 
 ---
