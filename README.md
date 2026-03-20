@@ -135,10 +135,10 @@ https://github.com/YBronst/OpenCore-Legacy-Patcher/releases
 Detailed setup instructions, prerequisites, troubleshooting tips and ongoing discussion can be found in the following threads:
 
 **InsanelyMac:**  
-https://www.insanelymac.com/forum/topic/362042-experimental-fork-of-oclp-300-nightly-%E2%80%93-modern-wi-fi-awdl-and-applehda-fully-working-under-tahoe/
+[Experimental fork of OCLP 3.0.0 Nightly – modern Wi-Fi, AWDL and AppleHDA fully working under Tahoe](https://www.insanelymac.com/forum/topic/362042-experimental-fork-of-oclp-300-nightly-%E2%80%93-modern-wi-fi-awdl-and-applehda-fully-working-under-tahoe/)
 
 **tonymacx86 (mirror thread):**  
-https://www.tonymacx86.com/threads/experimental-fork-of-oclp-3-0-0-nightly-modern-wi-fi-awdl-and-applehda-fully-working-under-tahoe-26-x.332849/
+[Experimental fork of OCLP 3.0.0 Nightly – modern Wi-Fi, AWDL and AppleHDA fully working under Tahoe 26.x](https://www.tonymacx86.com/threads/experimental-fork-of-oclp-3-0-0-nightly-modern-wi-fi-awdl-and-applehda-fully-working-under-tahoe-26-x.332849/)
 
 ---
 
