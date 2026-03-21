@@ -57,10 +57,9 @@ This fork is provided for documentation and testing purposes only and reflects d
 
 This repository represents a preserved reference implementation of the original Tahoe patchset workflow and is not an actively developed continuation of the patcher.
 
-**Note:** Active patchset development (MakAsrock/YBronst) is currently undergoing structural changes. Some external links may temporarily be unavailable.
+Active development of the Tahoe patchset continues in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock), but is currently undergoing structural changes.
 
-Active development of the Tahoe patchset continues in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock):  
-https://github.com/YBronst/OpenCore-Legacy-Patcher/releases
+**Note:** A related external project is available at: https://github.com/YBronst/OCLP-Plus. Some previously implemented links to OCLP 3.1.7 Nightly may no longer be available.
 
 ---
 
@@ -127,8 +126,7 @@ All four patchsets also provide full Apple Wireless Direct Link (AWDL) functiona
 
 This repository serves as a stable reference environment for macOS Tahoe 26.0–26.4 systems requiring fully working modern Wi-Fi and AppleHDA audio.
 
-Active development of the Tahoe patchset continues in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock):  
-https://github.com/YBronst/OpenCore-Legacy-Patcher/releases
+Active development of the Tahoe patchset continues in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock).
 
 ---
 
