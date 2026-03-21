@@ -57,6 +57,8 @@ This fork is provided for documentation and testing purposes only and reflects d
 
 This repository represents a preserved reference implementation of the original Tahoe patchset workflow and is not an actively developed continuation of the patcher.
 
+**Note:** Active patchset development (MakAsrock/YBronst) is currently undergoing structural changes. Some external links may temporarily be unavailable.
+
 Active development of the Tahoe patchset continues in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock):  
 https://github.com/YBronst/OpenCore-Legacy-Patcher/releases
 
