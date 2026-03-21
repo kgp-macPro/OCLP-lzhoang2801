@@ -57,9 +57,9 @@ This fork is provided for documentation and testing purposes only and reflects d
 
 This repository represents a preserved reference implementation of the original Tahoe patchset workflow and is not an actively developed continuation of the patcher.
 
-Active development of the Tahoe patchset continues in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock), but is currently undergoing structural changes.
+Active development of the Tahoe patchset previously continued in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock) and is no longer available in its original form.
 
-**Note:** A related external project is available at: https://github.com/YBronst/OCLP-Plus. Some previously implemented links to OCLP 3.1.7 Nightly may no longer be available.
+**Note:** A related external project is now available at: https://github.com/YBronst/OCLP-Plus. Some previously implemented links to OCLP 3.1.7 Nightly may no longer be available.
 
 ---
 
@@ -109,24 +109,18 @@ The issues observed in **macOS 26.4 beta 1** were most likely caused by a tempor
 The remaining problems encountered during root patching were caused by the absence of a **matching Kernel Debug Kit (KDK)**.  
 The required KDK was not released until **macOS 26.4 beta 4**.
 
-With **macOS 26.4 beta 4 and the corresponding KDK installed**, root patching works again with the following patcher versions:
+With **macOS 26.4 beta 4 and the corresponding KDK installed**, root patching works with the following patcher versions:
 
 - **OCLP 3.0.0 Nightly** (this repository)  
 - **OCLP 3.0.0 Nightly (amfipassbeta variant)**  
 - **OCLP-Mod 3.1.7**  
-- **OCLP 3.1.7 Nightly**  
+- **OCLP 3.1.7 Nightly** (deprecated / no longer maintained)  
 
-All four patchers can successfully apply the modern Wi-Fi and modern audio (AppleHDA) root patches when the matching KDK is available.  
-All four patchsets also provide full Apple Wireless Direct Link (AWDL) functionality.
+All listed patchers were able to successfully apply the modern Wi-Fi and modern audio (AppleHDA) root patches when the matching KDK was available.  
+All patchsets also provided full Apple Wireless Direct Link (AWDL) functionality under these conditions.
 
 - **OCLP 3.0.0 Nightly (amfipassbeta variant)** and **OCLP-Mod 3.1.7** work with **AMFIPass.kext + `-amfipassbeta`**  
 - **OCLP 3.0.0 Nightly** and **OCLP 3.1.7 Nightly** require **`amfi=0x80`**
-
----
-
-This repository serves as a stable reference environment for macOS Tahoe 26.0–26.4 systems requiring fully working modern Wi-Fi and AppleHDA audio.
-
-Active development of the Tahoe patchset continues in the OpenCore Legacy Patcher branch maintained by YBronst (MakAsrock).
 
 ---
 
