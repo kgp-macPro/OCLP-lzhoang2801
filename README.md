@@ -57,7 +57,7 @@ Continuity:
 
 - A suitable **Kernel Debug Kit (KDK)** is required for root patching  
 
-For compatibility details and updates, see:
+For full documentation, compatibility details and updates, see:
 
 **InsanelyMac thread (primary reference):**  
 https://www.insanelymac.com/forum/topic/362042-experimental-fork-of-oclp-300-nightly-%E2%80%93-modern-wi-fi-awdl-and-applehda-fully-working-under-tahoe/
