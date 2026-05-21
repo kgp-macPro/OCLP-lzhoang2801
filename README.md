@@ -147,3 +147,10 @@ This repository provides a preserved Tahoe patch environment intended for advanc
 Not intended for unsupported Macs requiring graphics acceleration root patches.
 
 Use at your own risk.
+
+---
+
+If this preserved reference repository was useful to you:
+
+A coffee is always appreciated ☕  
+https://buymeacoffee.com/kgp.macpro
