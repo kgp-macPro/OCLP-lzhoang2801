@@ -125,12 +125,22 @@ https://www.tonymacx86.com/threads/experimental-fork-of-oclp-3-0-0-nightly-moder
 
 ## Credits
 
-- Dortania OCLP Team (development)
-- lzhoang2801 (original Tahoe fork)
-- kgp (preservation, maintenance, AppleHDA restoration, testing and documentation)
-- badbrain (boot-arg `ipc_control_port_options=0` support)
+- Dortania OCLP Team (original OCLP authors and developers)
+- [crystall1nedev](https://github.com/crystall1nedev) (Eva Isabella Luna) (original OCLP 3.0.0 Nightly release)
+- [lzhoang2801](https://github.com/lzhoang2801) (original OCLP 3.0.0 Nightly fork)
+- [kgp-macPro](https://github.com/kgp-macPro) (preservation, maintenance, AMFIPass integration, AppleHDA restoration, testing and documentation)
+- [YBronst](https://github.com/YBronst) (OCLP Nightly development)
+- badbrain (boot-arg ipc_control_port_options=0 support)
+- [zxystd](https://github.com/zxystd) (itlwm/AirportItlwm project)
+- [lshbluesky](https://github.com/lshbluesky) (IntelBluetoothFirmware maintenance and releases)
+- [Vinhts](https://github.com/Vinhts) (IntelBTPatcher Tahoe 26.5 Bluetooth LE fixes)
+- [Z3c0ld](https://github.com/Z3c0ld) (IntelBTPatcher Tahoe 26.5 Bluetooth LE fixes)
 - InsanelyMac community
 - tonymacx86 community (mirror thread)
+
+For a complete list of OpenCore Legacy Patcher contributors, please refer to the original Dortania repository:
+
+https://github.com/dortania/OpenCore-Legacy-Patcher
 
 ---
 
