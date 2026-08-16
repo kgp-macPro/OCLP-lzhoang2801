@@ -5,15 +5,31 @@
 
 ---
 
-## Recommended Setup: amfipassbeta Edition
+## Three Available Tahoe Editions
 
-A newer recommended variant of this setup is available:
+### 1. OCLP 3.0.0 Nightly – Preserved Reference Edition
 
-👉 https://github.com/kgp-macPro/OCLP-lzhoang2801-amfipassbeta
+This repository is the most conservative preserved reference environment. It remains closest to the earlier working OCLP 3.0.0 Nightly Tahoe architecture and is intentionally frozen and preserved for reproducibility, comparison and conservative use.
 
-It supports **AMFIPass.kext with `-amfipassbeta`** and does not require `amfi=0x80`.
+It retains the historical configuration:
 
-This repository is preserved primarily as a historical and reproducible reference environment for the original `amfi=0x80` workflow.
+- `amfi=0x80`
+- `ipc_control_port_options=0`
+
+### 2. OCLP 3.0.0 Nightly – amfipassbeta Edition
+
+The amfipassbeta Edition is an established, extensively runtime-tested conservative AMFIPass-based configuration that remains close to the preserved Nightly architecture.
+
+[OCLP 3.0.0 Nightly – amfipassbeta Edition](https://github.com/kgp-macPro/OCLP-lzhoang2801-amfipassbeta)
+
+### 3. OCLP-CustoMac
+
+OCLP-CustoMac is a separate further-developed branch with selectable Modern Wi-Fi and Modern Audio, direct Intel hardware detection, AUTO and Manual KDK handling, improved Root Patch recovery and APFS internal resources.
+
+- [OCLP-CustoMac repository](https://github.com/kgp-macPro/OCLP-CustoMac)
+- [OCLP-CustoMac 3.0.0 release](https://github.com/kgp-macPro/OCLP-CustoMac/releases/tag/v3.0.0)
+
+All three editions remain available. Neither conservative edition is obsolete or deprecated, and migration to OCLP-CustoMac is optional.
 
 ---
 
@@ -45,22 +61,30 @@ The fork only enables and preserves the original Tahoe patch functionality alrea
 
 ## Functionality
 
-The following components are currently confirmed functional:
+### Modern Audio / AppleHDA
 
 - modern audio (AppleHDA)
-- modern Wi-Fi (Broadcom + supported Intel chipsets)
 
-AWDL stack:
+### Broadcom Modern Wireless
+
+The validated Broadcom path includes:
+
+- Wi-Fi
 - AirDrop (bidirectional)
 - AirPlay (bidirectional)
 - Screen Mirroring (bidirectional)
 - Personal Hotspot
 - Continuity Camera
-
-Continuity:
 - Handoff (e.g. Mail, Notes, Safari)
 
-Sidecar:
+### Intel Wi-Fi
+
+Intel Wi-Fi operation depends on external AirportItlwm. Current AirportItlwm does not provide the complete native AWDL control/data path required for reliable bidirectional AirDrop, Personal Hotspot or Continuity Camera.
+
+Intel therefore does not inherit the complete Broadcom AWDL/Continuity claim above.
+
+### Sidecar
+
 - currently not functional
 
 ---
@@ -90,6 +114,14 @@ https://github.com/kgp-macPro/PatcherSupportPkg-lzhoang2801
 
 This PatcherSupportPkg provides the required Universal-Binaries including AppleHDA.
 
+### Payload Provenance
+
+The final publicly released lzhoang2801 OCLP 3.0.0 Nightly configuration references a newer PatcherSupportPkg that no longer contains the required Tahoe `AppleHDA.kext` expected by its Modern Audio patch definition. Consequently, when Modern Audio is applicable, that final published configuration cannot complete the expected Tahoe Root Patch because the required AppleHDA payload is absent.
+
+This Preserved Reference Edition intentionally uses an earlier working lzhoang2801 PatcherSupportPkg. That earlier package retains the required Modern Wireless resources and `AppleHDA.kext`; its relevant Modern Wireless framework variants are the earlier ad-hoc-signed versions.
+
+This provenance statement does not claim that entire PatcherSupportPkg repositories are globally byte-identical.
+
 ---
 
 ## Repository Scope
@@ -108,7 +140,7 @@ This repository:
 - this fork only enables and preserves the original Tahoe patch functionality already implemented by the OCLP developers
 - this fork is **not supported by the OCLP developers**
 - intended exclusively for **advanced Hackintosh configurations**
-- only modern audio (AppleHDA) and modern Wi-Fi + AWDL functionality are expected to work reliably
+- modern audio (AppleHDA) and the validated Broadcom Modern Wireless AWDL/Continuity path are expected to work reliably; Intel remains subject to external AirportItlwm limitations
 - no additional graphics acceleration or unsupported-Mac root patch frameworks are included
 - always keep a bootable backup before applying root patches
 
