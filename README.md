@@ -5,31 +5,43 @@
 
 ---
 
-## Three Available Tahoe Editions
+## Three Established Tahoe Approaches
+
+OCLP-CustoMac does not obsolete or withdraw the two earlier KGP Tahoe configurations. All three approaches remain intentionally available.
 
 ### 1. OCLP 3.0.0 Nightly – Preserved Reference Edition
 
-This repository is the most conservative preserved reference environment. It remains closest to the earlier working OCLP 3.0.0 Nightly Tahoe architecture and is intentionally frozen and preserved for reproducibility, comparison and conservative use.
+Repository: [kgp-macPro/OCLP-lzhoang2801](https://github.com/kgp-macPro/OCLP-lzhoang2801)
 
-It retains the historical configuration:
-
-- `amfi=0x80`
-- `ipc_control_port_options=0`
+- conservative reference environment closest to the earlier working lzhoang2801 OCLP 3.0.0 Nightly Tahoe state;
+- uses the earlier working lzhoang2801 PatcherSupportPkg containing Modern Wireless resources and AppleHDA;
+- retains the historical `amfi=0x80` and `ipc_control_port_options=0` AMFI path;
+- intentionally frozen and preserved for reproducibility, comparison and conservative use.
 
 ### 2. OCLP 3.0.0 Nightly – amfipassbeta Edition
 
-The amfipassbeta Edition is an established, extensively runtime-tested conservative AMFIPass-based configuration that remains close to the preserved Nightly architecture.
+Repository: [kgp-macPro/OCLP-lzhoang2801-amfipassbeta](https://github.com/kgp-macPro/OCLP-lzhoang2801-amfipassbeta)
 
-[OCLP 3.0.0 Nightly – amfipassbeta Edition](https://github.com/kgp-macPro/OCLP-lzhoang2801-amfipassbeta)
+- conservative and extensively tested on real systems over many months;
+- remains close to the preserved Nightly architecture;
+- uses `AMFIPass.kext + -amfipassbeta`;
+- its documented Intel configuration uses a Broadcom `IOName` spoof with AirportItlwm;
+- remains fully available; satisfied users do not need to migrate, and migration is optional.
 
 ### 3. OCLP-CustoMac
 
-OCLP-CustoMac is a separate further-developed branch with selectable Modern Wi-Fi and Modern Audio, direct Intel hardware detection, AUTO and Manual KDK handling, improved Root Patch recovery and APFS internal resources.
+Repository: [kgp-macPro/OCLP-CustoMac](https://github.com/kgp-macPro/OCLP-CustoMac)
 
-- [OCLP-CustoMac repository](https://github.com/kgp-macPro/OCLP-CustoMac)
-- [OCLP-CustoMac 3.0.0 release](https://github.com/kgp-macPro/OCLP-CustoMac/releases/tag/v3.0.0)
+Release: [OCLP-CustoMac 3.0.0](https://github.com/kgp-macPro/OCLP-CustoMac/releases/tag/v3.0.0)
 
-All three editions remain available. Neither conservative edition is obsolete or deprecated, and migration to OCLP-CustoMac is optional.
+- current recommended KGP setup for new installations and users who want the further-developed patcher architecture;
+- further-developed focused branch with direct Intel detection;
+- does not require a Broadcom `IOName` spoof for Intel detection;
+- selectable Modern Wi-Fi and Modern Audio;
+- automatic and optional manual KDK selection;
+- strengthened root-patch recovery;
+- APFS internal resources;
+- reproducible, validated builds.
 
 ---
 
