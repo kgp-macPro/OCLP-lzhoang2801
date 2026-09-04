@@ -5,6 +5,26 @@
 
 ---
 
+## Established Preserved Reference Setup
+
+This repository provides the **established conservative Preserved Reference Edition** of the earlier working OCLP 3.0.0 Nightly Tahoe patch environment using:
+
+**the earlier working lzhoang2801 PatcherSupportPkg with complete Modern Wireless resources and Tahoe `AppleHDA.kext`**
+
+It intentionally retains the historical:
+
+**`amfi=0x80` + `ipc_control_port_options=0`**
+
+AMFI configuration and remains as close as possible to the original Nightly architecture.
+
+For full documentation, compatibility details, proper setup and EFI configuration, see:
+
+**InsanelyMac thread (primary reference):**
+
+https://www.insanelymac.com/forum/topic/362042-experimental-fork-of-oclp-300-nightly-%E2%80%93-modern-wi-fi-awdl-and-applehda-fully-working-under-tahoe/
+
+---
+
 ## Three Established Tahoe Approaches
 
 OCLP-CustoMac does not obsolete or withdraw the two earlier KGP Tahoe configurations. All three approaches remain intentionally available.
@@ -32,7 +52,7 @@ Repository: [kgp-macPro/OCLP-lzhoang2801-amfipassbeta](https://github.com/kgp-ma
 
 Repository: [kgp-macPro/OCLP-CustoMac](https://github.com/kgp-macPro/OCLP-CustoMac)
 
-Release: [OCLP-CustoMac 3.0.1](https://github.com/kgp-macPro/OCLP-CustoMac/releases/tag/v3.0.1)
+Release: [OCLP-CustoMac 3.0.2](https://github.com/kgp-macPro/OCLP-CustoMac/releases/latest)
 
 - current recommended KGP setup for new installations and users who want the further-developed patcher architecture;
 - further-developed focused branch with direct Intel detection;
