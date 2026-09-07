@@ -52,16 +52,19 @@ Repository: [kgp-macPro/OCLP-lzhoang2801-amfipassbeta](https://github.com/kgp-ma
 
 Repository: [kgp-macPro/OCLP-CustoMac](https://github.com/kgp-macPro/OCLP-CustoMac)
 
-Release: [OCLP-CustoMac 3.0.2](https://github.com/kgp-macPro/OCLP-CustoMac/releases/latest)
+Release: [OCLP-CustoMac 3.0.3](https://github.com/kgp-macPro/OCLP-CustoMac/releases/latest)
 
 - current recommended KGP setup for new installations and users who want the further-developed patcher architecture;
 - further-developed focused branch with direct Intel detection;
 - does not require a Broadcom `IOName` spoof for Intel detection;
+- uses `AMFIPass.kext` 1.4.1 + `-amfipassbeta`; `amfi=0x80` is not required;
 - selectable Modern Wi-Fi and Modern Audio;
 - automatic and optional manual KDK selection;
 - strengthened root-patch recovery;
 - APFS internal resources;
 - reproducible, validated builds.
+
+In contrast to this Preserved Reference Edition, both the amfipassbeta Edition and OCLP-CustoMac use `AMFIPass.kext` 1.4.1 + `-amfipassbeta`; `amfi=0x80` is not required for their validated configurations. The Preserved Reference Edition itself intentionally retains `amfi=0x80` + `ipc_control_port_options=0` and does not use that AMFIPass configuration.
 
 ---
 
