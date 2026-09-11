@@ -120,6 +120,11 @@ restores the legacy Broadcom stack under Tahoe; BroadcomVTD-Tahoe addresses
 the additional kernel-resident Tahoe runtime DMA/IOMMU compatibility problem
 observed when the restored AirPortBrcmNIC stack operates with AppleVTD enabled.
 
+Discussion threads:
+
+- [InsanelyMac](https://www.insanelymac.com/forum/topic/363186-broadcomvtd-tahoe-broadcom-wi-fi-with-applevtd-enabled-on-macos-tahoe/)
+- [TonyMacx86](https://www.tonymacx86.com/threads/broadcomvtd-tahoe-broadcom-wi-fi-with-applevtd-enabled-on-macos-tahoe.333357/)
+
 ### Intel Wi-Fi
 
 Intel Wi-Fi operation depends on external AirportItlwm. Current AirportItlwm does not provide the complete native AWDL control/data path required for reliable bidirectional AirDrop, Personal Hotspot or Continuity Camera.
