@@ -112,6 +112,14 @@ The validated Broadcom path includes:
 - Continuity Camera
 - Handoff (e.g. Mail, Notes, Safari)
 
+**Broadcom / AppleVTD:** For users who want to keep AppleVTD/IOMMU enabled
+with legacy Broadcom Wi-Fi under macOS Tahoe, see the independent experimental
+[BroadcomVTD-Tahoe](https://github.com/kgp-macPro/BroadcomVTD-Tahoe)
+project (`BroadcomVTD.kext`). The Modern Wireless root-patch environment
+restores the legacy Broadcom stack under Tahoe; BroadcomVTD-Tahoe addresses
+the additional kernel-resident Tahoe runtime DMA/IOMMU compatibility problem
+observed when the restored AirPortBrcmNIC stack operates with AppleVTD enabled.
+
 ### Intel Wi-Fi
 
 Intel Wi-Fi operation depends on external AirportItlwm. Current AirportItlwm does not provide the complete native AWDL control/data path required for reliable bidirectional AirDrop, Personal Hotspot or Continuity Camera.
